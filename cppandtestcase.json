@@ -1,0 +1,196 @@
+[
+    {
+        "cpp_code": "int add(int x, int y) {\n  return x + y;\n  }",
+        "gtest_case":"TEST(MathTest, Add) {\n  EXPECT_EQ(add(2, 2), 4);\n EXPECT_EQ(add(0, 0), 0);\n  }"
+    },
+    {
+        "cpp_code": "int gcd(int a, int b) {\n  while (b != 0) { \n int temp = b;\n  b = a % b;\n  a = temp;\n  }\n  return a; \n }",
+        "gtest_case": "#TEST(MathTest, GCD) {\n EXPECT_EQ(gcd(12, 8), 4);\n EXPECT_EQ(gcd(18, 12), 6); \n}"
+    },
+    {
+        "cpp_code": "double square_root(const double num) {\n    if (num < 0) return -1;\n ",
+        "gtest_case": "#TEST (SquareRootTest, PositiveNos) {\n    EXPECT_EQ (18.0, square_root (324.0));\n    EXPECT_EQ (25.4, square_root (645.16));\n    EXPECT_EQ (50.3321, square_root (2533.310224));\n}\n\nTEST (SquareRootTest, ZeroAndNegativeNos) {\n    ASSERT_EQ (0.0, square_root (0.0));\n    ASSERT_EQ (-1, square_root (-22.0));\n}"
+    },
+    {
+        "cpp_code":"int factorial(int n){\n if (n <= 1) return 1;\n return n * factorial(n - 1);\n}",
+        "gtest_case":"#TEST(FactorialTest, PositiveNos) {\n EXPECT_EQ(factorial(1), 1);\n EXPECT_EQ(factorial(2), 2);\n EXPECT_EQ(factorial(5), 120);\n } \n\n  TEST(FactorialTest, Zero){ \n  EXPECT_EQ(factorial(0), 1); \n } "
+    },
+    {
+        "cpp_code":"bool is_prime(int n){ \n if (n <= 1) return false; \n for (int i = 2; i <= sqrt(n); ++i){\n if (n % i == 0) return false;\n } \n return true;\n } ",
+        "gtest_code": "TEST(PrimeTest, PositiveNos) {\n    EXPECT_TRUE(is_prime(2));\n    EXPECT_TRUE(is_prime(3));\n    EXPECT_FALSE(is_prime(4));\n}\n\nTEST(PrimeTest, NegativeNos) {\n    EXPECT_FALSE(is_prime(-1));\n    EXPECT_FALSE(is_prime(0));\n} "
+    },
+    {
+        "cpp_code": "std::string reverse_string(const std::string& str) {\n    return std::string(str.rbegin(), str.rend());\n}\n",
+        "gtest_code": "TEST(ReverseStringTest, BasicStrings) {\n    EXPECT_EQ(reverse_string(\"hello\"), \"olleh\");\n    EXPECT_EQ(reverse_string(\"world\"), \"dlrow\");\n}\n\nTEST(ReverseStringTest, EmptyString) {\n    EXPECT_EQ(reverse_string(\"\"), \"\");\n}"
+    },
+    {
+       "cpp_code":"int find_max(int arr[], int size) {\n    int max = arr[0];\n    for (int i = 1; i < size; ++i) {\n        if (arr[i] > max) max = arr[i];\n    }\n    return max;\n}\n",
+       "gtest_code": "#TEST(FindMaxTest, PositiveNos) {\n    int arr[] = {1, 2, 3, 4, 5};\n    EXPECT_EQ(find_max(arr, 5), 5);\n}\n\nTEST(FindMaxTest, NegativeNos) {\n    int arr[] = {-1, -2, -3, -4, -5};\n    EXPECT_EQ(find_max(arr, 5), -1);\n}"
+    },
+    {
+       "cpp_code": "double average(int arr[], int size) {\n    int sum = 0;\n    for (int i = 0; i < size; ++i) {\n        sum += arr[i];\n    }\n    return (double)sum / size;\n}\n",
+       "gtest_code": "#TEST(AverageTest, PositiveNos) {\n    int arr[] = {1, 2, 3, 4, 5};\n    EXPECT_DOUBLE_EQ(average(arr, 5), 3.0);\n}\n\nTEST(AverageTest, MixedNos) {\n    int arr[] = {-1, -2, 3, 4, 5};\n    EXPECT_DOUBLE_EQ(average(arr, 5), 1.8);\n}"
+    },
+    {
+       "cpp_code": "bool is_even(int n) {\n    return n % 2 == 0;\n}\n",
+       "gtest_code": "#TEST(IsEvenTest, PositiveNos) {\n    EXPECT_TRUE(is_even(2));\n    EXPECT_TRUE(is_even(4));\n    EXPECT_FALSE(is_even(3));\n}\n\nTEST(IsEvenTest, NegativeNos) {\n    EXPECT_TRUE(is_even(-2));\n    EXPECT_FALSE(is_even(-3));\n}"
+
+    },
+    {
+       "cpp_code": "int sum_array(int arr[], int size) {\n    int sum = 0;\n    for (int i = 0; i < size; ++i) {\n        sum += arr[i];\n    }\n    return sum;\n}\n ",
+       "gtest_code":"#TEST(SumArrayTest, PositiveNos) {\n    int arr[] = {1, 2, 3, 4, 5};\n    EXPECT_EQ(sum_array(arr, 5), 15);\n}\n\nTEST(SumArrayTest, MixedNos) {\n    int arr[] = {1, -2, 3, -4, 5};\n    EXPECT_EQ(sum_array(arr, 5), 3);\n}\n"
+    },
+    {
+       "cpp_code":"std::string to_uppercase(const std::string& str) {\n    std::string result = str;\n    for (char& c : result) {\n        c = toupper(c);\n    }\n    return result;\n}\n",
+       "gtest_code":"#TEST(ToUpperCaseTest, BasicStrings) {\n    EXPECT_EQ(to_uppercase(\"hello\"), \"HELLO\");\n    EXPECT_EQ(to_uppercase(\"World\"), \"WORLD\");\n}\n\nTEST(ToUpperCaseTest, EmptyString) {\n    EXPECT_EQ(to_uppercase(\"\"), \"\");\n}\n"
+
+    },
+    {
+      "cpp_code": "bool is_palindrome(const std::string& str) {\n    int n = str.size();\n    for (int i = 0; i < n / 2; ++i) {\n        if (str[i] != str[n - i - 1]) {\n            return false;\n        }\n    }\n    return true;\n}\n",
+      "gtest_code":"#TEST(PalindromeTest, PositiveCases) {\n    EXPECT_TRUE(is_palindrome(\"madam\"));\n    EXPECT_TRUE(is_palindrome(\"racecar\"));\n}\n\nTEST(PalindromeTest, NegativeCases) {\n    EXPECT_FALSE(is_palindrome(\"hello\"));\n    EXPECT_FALSE(is_palindrome(\"world\"));\n}\n"
+    },
+    {
+      "cpp_code":"int fibonacci(int n) {\n    if (n <= 1) return n;\n    return fibonacci(n - 1) + fibonacci(n - 2);\n}\n",
+      "gtest_code":"#TEST(FibonacciTest, BasicCases) {\n    EXPECT_EQ(fibonacci(0), 0);\n    EXPECT_EQ(fibonacci(1), 1);\n    EXPECT_EQ(fibonacci(5), 5);\n    EXPECT_EQ(fibonacci(10), 55);\n}\n\nTEST(FibonacciTest, NegativeCases) {\n    EXPECT_EQ(fibonacci(-1), 0);  // Assuming function handles negative numbers as 0.\n}\n"
+    },
+    {
+      "cpp_code":"double power(double base, int exp) {\n    double result = 1.0;\n    for (int i = 0; i < exp; ++i) {\n        result *= base;\n    }\n    return result;\n}\n",
+      "gtest_code":"TEST(PowerTest, PositiveExponents) {\n    EXPECT_DOUBLE_EQ(power(2.0, 3), 8.0);\n    EXPECT_DOUBLE_EQ(power(5.0, 2), 25.0);\n}\n\nTEST(PowerTest, ZeroExponent) {\n    EXPECT_DOUBLE_EQ(power(2.0, 0), 1.0);\n    EXPECT_DOUBLE_EQ(power(5.0, 0), 1.0);\n}\n"
+    },
+    {
+      "cpp_code":"bool contains(const std::vector<int>& vec, int value) {\n    return std::find(vec.begin(), vec.end(), value) != vec.end();\n}\n",
+      "gtest_code": "#TEST(ContainsTest, BasicCases) {\n    std::vector<int> vec = {1, 2, 3, 4, 5};\n    EXPECT_TRUE(contains(vec, 3));\n    EXPECT_FALSE(contains(vec, 6));\n}\n\nTEST(ContainsTest, EmptyVector) {\n    std::vector<int> vec;\n    EXPECT_FALSE(contains(vec, 1));\n}\n"
+    },
+    {
+      "cpp_code":"double celsius_to_fahrenheit(double celsius) {\n    return (celsius * 9.0/5.0) + 32;\n}\n",
+      "gtest_code":"#TEST(TemperatureConversionTest, CelsiusToFahrenheit) {\n    EXPECT_DOUBLE_EQ(celsius_to_fahrenheit(0.0), 32.0);\n    EXPECT_DOUBLE_EQ(celsius_to_fahrenheit(100.0), 212.0);\n}\n\nTEST(TemperatureConversionTest, NegativeCelsius) {\n    EXPECT_DOUBLE_EQ(celsius_to_fahrenheit(-40.0), -40.0);\n}\n"
+    },
+    {
+      "cpp_code": "void reverse_array(int* arr, int size) {\n    int* start = arr;\n    int* end = arr + size - 1;\n    while (start < end) {\n        int temp = *start;\n        *start = *end;\n        *end = temp;\n        start++;\n        end--;\n    }\n}\n",
+      "gtest_code": "#TEST(ReverseArrayTest, PositiveArray) {\n    int arr[] = {1, 2, 3, 4, 5};\n    reverse_array(arr, 5);\n    int expected[] = {5, 4, 3, 2, 1};\n    for (int i = 0; i < 5; ++i) {\n        EXPECT_EQ(arr[i], expected[i]);\n    }\n}\n\nTEST(ReverseArrayTest, SingleElementArray) {\n    int arr[] = {42};\n    reverse_array(arr, 1);\n    EXPECT_EQ(arr[0], 42);\n}\n"
+    },
+    {
+      "cpp_code": "class Point {\npublic:\n    Point(int x, int y) : x_(x), y_(y) {}\n\n    int get_x() const { return x_; }\n    int get_y() const { return y_; }\n\n    void move(int dx, int dy) {\n        x_ += dx;\n        y_ += dy;\n    }\n\nprivate:\n    int x_;\n    int y_;\n};\n",
+      "gtest_code":"#TEST(PointTest, Constructor) {\n    Point p(3, 4);\n    EXPECT_EQ(p.get_x(), 3);\n    EXPECT_EQ(p.get_y(), 4);\n}\n\nTEST(PointTest, MoveFunction) {\n    Point p(1, 1);\n    p.move(2, 3);\n    EXPECT_EQ(p.get_x(), 3);\n    EXPECT_EQ(p.get_y(), 4);\n}\n"
+    },
+    {
+      "cpp_code":"struct Node {\n    int data;\n    Node* next;\n};\n\nvoid append(Node** head_ref, int new_data) {\n    Node* new_node = new Node();\n    Node* last = *head_ref;\n    new_node->data = new_data;\n    new_node->next = nullptr;\n    if (*head_ref == nullptr) {\n        *head_ref = new_node;\n        return;\n    }\n    while (last->next != nullptr) {\n        last = last->next;\n    }\n    last->next = new_node;\n}\n",
+      "gtest_code":"#TEST(LinkedListTest, AppendSingleElement) {\n    Node* head = nullptr;\n    append(&head, 10);\n    ASSERT_NE(head, nullptr);\n    EXPECT_EQ(head->data, 10);\n    EXPECT_EQ(head->next, nullptr);\n}\n\nTEST(LinkedListTest, AppendMultipleElements) {\n    Node* head = nullptr;\n    append(&head, 1);\n    append(&head, 2);\n    append(&head, 3);\n    \n    Node* temp = head;\n    EXPECT_EQ(temp->data, 1);\n    temp = temp->next;\n    EXPECT_EQ(temp->data, 2);\n    temp = temp->next;\n    EXPECT_EQ(temp->data, 3);\n}\n"
+    },
+    {
+      "cpp_code": "class DynamicArray {\npublic:\n    DynamicArray(int size) : size_(size), array_(new int[size]) {}\n\n    ~DynamicArray() {\n        delete[] array_;\n    }\n\n    int get(int index) const {\n        return array_[index];\n    }\n\n    void set(int index, int value) {\n        array_[index] = value;\n    }\n\nprivate:\n    int size_;\n    int* array_;\n};\n",
+      "gtest_code":"#TEST(DynamicArrayTest, ConstructorAndSetGet) {\n    DynamicArray arr(3);\n    arr.set(0, 10);\n    arr.set(1, 20);\n    arr.set(2, 30);\n\n    EXPECT_EQ(arr.get(0), 10);\n    EXPECT_EQ(arr.get(1), 20);\n    EXPECT_EQ(arr.get(2), 30);\n}\n\nTEST(DynamicArrayTest, MemoryDeallocation) {\n    DynamicArray* arr = new DynamicArray(2);\n    arr->set(0, 42);\n    EXPECT_EQ(arr->get(0), 42);\n    delete arr;  // Verify that memory is properly deallocated without leaks.\n}\n"
+    },
+    {
+      "cpp_code": "class Animal {\npublic:\n    virtual std::string sound() const = 0;\n};\n\nclass Dog : public Animal {\npublic:\n    std::string sound() const override {\n        return \"Bark\";\n    }\n};\n\nclass Cat : public Animal {\npublic:\n    std::string sound() const override {\n        return \"Meow\";\n    }\n};\n",
+      "gtest_code":"#TEST(AnimalTest, DogSound) {\n    Dog dog;\n    EXPECT_EQ(dog.sound(), \"Bark\");\n}\n\nTEST(AnimalTest, CatSound) {\n    Cat cat;\n    EXPECT_EQ(cat.sound(), \"Meow\");\n}\n\nTEST(AnimalTest, Polymorphism) {\n    Animal* animal = new Dog();\n    EXPECT_EQ(animal->sound(), \"Bark\");\n    delete animal;\n\n    animal = new Cat();\n    EXPECT_EQ(animal->sound(), \"Meow\");\n    delete animal;\n}\n"
+    },
+    {
+      "cpp_code":"void allocate_memory(int** ptr) {\n    *ptr = new int(10);\n}\n\nvoid deallocate_memory(int** ptr) {\n    delete *ptr;\n    *ptr = nullptr;\n}\n",
+      "gtest_code": "#TEST(PointerToPointerTest, AllocationDeallocation) {\n    int* ptr = nullptr;\n    allocate_memory(&ptr);\n    ASSERT_NE(ptr, nullptr);\n    EXPECT_EQ(*ptr, 10);\n\n    deallocate_memory(&ptr);\n    EXPECT_EQ(ptr, nullptr);\n}\n"
+    },
+    {
+      "cpp_code": "class Copyable {\npublic:\n    Copyable(int value) : value_(new int(value)) {}\n\n    // Copy constructor\n    Copyable(const Copyable& other) : value_(new int(*other.value_)) {}\n\n    // Assignment operator\n    Copyable& operator=(const Copyable& other) {\n        if (this != &other) {\n            *value_ = *other.value_;\n        }\n        return *this;\n    }\n\n    ~Copyable() {\n        delete value_;\n    }\n\n    int get_value() const { return *value_; }\n\nprivate:\n    int* value_;\n};\n",
+      "gtest_code": "TEST(CopyableTest, CopyConstructor) {\n    Copyable obj1(42);\n    Copyable obj2 = obj1;  // Use copy constructor\n\n    EXPECT_EQ(obj1.get_value(), 42);\n    EXPECT_EQ(obj2.get_value(), 42);\n}\n\nTEST(CopyableTest, AssignmentOperator) {\n    Copyable obj1(100);\n    Copyable obj2(50);\n    obj2 = obj1;  // Use assignment operator\n\n    EXPECT_EQ(obj1.get_value(), 100);\n    EXPECT_EQ(obj2.get_value(), 100);\n}\n"
+    },
+    {
+      "cpp_code": "#include <memory>\n\nclass Resource {\npublic:\n    Resource(int value) : value_(value) {}\n    int get_value() const { return value_; }\n\nprivate:\n    int value_;\n};\n\nstd::shared_ptr<Resource> create_resource(int value) {\n    return std::make_shared<Resource>(value);\n}\n",
+      "gtest_code": "#include <memory>\n\nTEST(SmartPointerTest, SharedPtrResource) {\n    std::shared_ptr<Resource> res = create_resource(42);\n    ASSERT_NE(res, nullptr);\n    EXPECT_EQ(res->get_value(), 42);\n}\n"
+    },
+    {
+        "cpp_code_header": "// Tree.h\n#include <vector>\n#include <string>\n\nstruct FileNode {\n  std::string name;\n  bool is_dir;\n  std::vector<FileNode> children;\n};\n\nFileNode GetTree(const std::string& path, bool dirs_only);\n\nbool operator == (const FileNode& f1, const FileNode& f2);",
+        "cpp_code_source": "// Tree.cpp\n#include \"Tree.h\"\n\n#include <boost/filesystem.hpp>\n\nusing boost::filesystem::exists;\nusing boost::filesystem::is_directory;\nusing boost::filesystem::path;\nusing boost::filesystem::directory_iterator;\n\nFileNode GetTree(const std::string& path, bool dirs_only) {\n  FileNode answer;\n  if (!exists(path)) {\n    throw std::invalid_argument(\"Path does not exist\");\n  }\n\n  if (!is_directory(path)) {\n    throw std::invalid_argument(\"Path is not a directory\");\n  }\n  answer.name = boost::filesystem::path(path).filename().string();\n  answer.is_dir = true;\n  for (auto& child: directory_iterator(path)) {\n    if (is_directory(child)){\n      answer.children.push_back(\n        GetTree(boost::filesystem::path(child).string(), dirs_only)\n      );\n    } else {\n      if (dirs_only) {\n        continue;\n      }\n      answer.children.push_back({\n        boost::filesystem::path(child).filename().string(), false, {}\n      });\n    }\n  }\n  return answer;\n}\n\nbool operator == (const FileNode& f1, const FileNode& f2) {\n  return f1.name == f2.name && f1.is_dir == f2.is_dir && f1.children == f2.children;\n}",
+        "gtest_code_header":"// TreeTestCase.h\n\n#include <gtest/gtest.h>\n#include <boost/filesystem.hpp>\n\nusing boost::filesystem::create_directory;\nusing boost::filesystem::exists;\nusing boost::filesystem::remove_all;\nusing boost::filesystem::ofstream;\n\nclass TreeTestCase : public ::testing::Test {\n protected:\n  virtual void SetUp() {\n    if (exists(testing_folder)) {\n      throw std::runtime_error(\"Error: directory \" + testing_folder + \" already exists.\");\n    }\n\n    // create directories\n    create_directory(testing_folder);\n    create_directory(testing_folder + \"/1\");\n    create_directory(testing_folder + \"/2\");\n\n    // create file\n    ofstream(testing_folder + \"/test_file.txt\");\n  }\n\n  virtual void TearDown() {\n    remove_all(testing_folder);\n  }\n\n public:\n  const std::string testing_folder = \"_TESTING_DIRECTORY_\";\n};",
+        "gtest_code_source": "// TreeTestCase.cpp\n #include \"TreeTestCase.h\"\n#include \"Tree.h\"\n\nTEST_F(TreeTestCase, PathDoesntExist) {\n  EXPECT_THROW(GetTree(\"/not/invalid/path\", true), std::invalid_argument);\n  EXPECT_THROW(GetTree(\"/not/invalid/path\", false), std::invalid_argument);\n}\n\nTEST_F(TreeTestCase, Directory) {\n  ASSERT_TRUE(GetTree(testing_folder, false).is_dir);\n  EXPECT_NO_THROW(GetTree(testing_folder, true));\n  EXPECT_NO_THROW(GetTree(testing_folder, false));\n}\n\nTEST_F(TreeTestCase, NotDirectory) {\n  EXPECT_THROW(GetTree(\"/bin/echo\", false), std::invalid_argument);\n  EXPECT_THROW(GetTree(\"/bin/echo\", true), std::invalid_argument);\n}\n\nTEST_F(TreeTestCase, Parameters) {\n  ASSERT_GE(GetTree(testing_folder, true).children.size(), 2);\n  ASSERT_TRUE(GetTree(testing_folder, true) == GetTree(testing_folder, true));\n  ASSERT_TRUE(GetTree(testing_folder, false) == GetTree(testing_folder, false));\n}"
+    },
+    {
+        "cpp_code_header":"//Leapyear.h\n\nint Add(int x, int y);\n\nbool IsLeap(int year);",
+        "cpp_code_source":"//Leapyear.cpp\n\n#include \"Functions.h\"\n\n#include <stdexcept>\nint Add(int x, int y) {\n    return x + y;\n}\n\nbool IsLeap(int year) {\n  if (year <= 0) {\n    throw std::invalid_argument(\"Year must be greater than 0\");\n  }\n\n  if (year % 4 == 0) {\n    if (year % 100 == 0) {\n      if (year % 400 == 0) {\n        return true;\n      } else {\n        return false;\n      }\n    } else {\n      return true;\n    }\n    return true;\n  }\n  return false;\n}",
+        "gtest_code_header":"//LeapyearTestCase.h\n\n#include <gtest/gtest.h>\n\nclass LeapTestCase : public ::testing::Test {\n\n};",
+        "gtest_code_source":"//LeapyearTestCase.cpp\n\n #include \"LeapTestCase.h\"\n\n#include <Functions.h>\n\nTEST(LeapTestCase, IfCases) {\n  ASSERT_FALSE(IsLeap(1));\n  ASSERT_FALSE(IsLeap(17));\n  ASSERT_FALSE(IsLeap(2001));\n  ASSERT_FALSE(IsLeap(1993));\n  ASSERT_FALSE(IsLeap(3100));\n\n  ASSERT_TRUE(IsLeap(400));\n  ASSERT_TRUE(IsLeap(888));\n  ASSERT_TRUE(IsLeap(1996));\n  ASSERT_TRUE(IsLeap(2020));\n}\n\nTEST(LeapTestCase, ValueErrors) {\n  ASSERT_THROW(IsLeap(0), std::invalid_argument);\n  ASSERT_THROW(IsLeap(-25), std::invalid_argument);\n}"
+    },
+    {
+        "cpp_code_header":"//Weather.h\n\n#include \"json.hpp\"\n#include \"cpr/cpr.h\"\n\nusing json = nlohmann::json;\n\n\nclass Weather {\n public:\n  json GetResponseForCity(const std::string& city);\n  float GetTemperature(const std::string& city);\n\n  float FindDiffBetweenTwoCities(const std::string& city1, const std::string& city2);\n\n  void SetApiKey(const std::string& api_key);\n\n  std::string GetDifferenceString(const std::string& city1, const std::string& city2);\n protected:\n  virtual cpr::Response Get(const std::string& city);\n private:\n  const cpr::Url kBaseUrl = cpr::Url{\"http://api.openweathermap.org/data/2.5/forecast\"};\n  std::string api_key_;\n};",
+        "cpp_code_source":"//Weather.cpp\n\n#include \"Weather.h\"\n#include \"cpr/cpr.h\"\n\n\njson Weather::GetResponseForCity(const std::string &city) {\n  auto response = Get(city);\n\n  if (response.status_code != 200) {\n    throw std::invalid_argument(\"Api error. City is bad\");\n  }\n  json result = json::parse(response.text);\n  return result;\n}\n\nfloat Weather::GetTemperature(const std::string& city) {\n  json response = GetResponseForCity(city);\n  return response[\"list\"][0][\"main\"][\"temp\"];\n}\n\ncpr::Response Weather::Get(const std::string& city) {\n  return cpr::Get(\n    kBaseUrl, cpr::Parameters{\n      {\"q\", city},\n      {\"appid\", api_key_},\n      {\"units\", \"metric\"}\n    }\n  );\n}\n\nstd::string Weather::GetDifferenceString(const std::string &city1, const std::string &city2) {\n  float diff = FindDiffBetweenTwoCities(city1, city2);\n  std::stringstream output;\n  output << \"Weather in \" << city1 << \" \";\n  if (diff < 0) {\n    output << \"is colder than in \" << city2 << \" by \" << int(-diff) << \" degrees\";\n  } else {\n    output << \"is warmer than in \" << city2 << \" by \" << int(diff) << \" degrees\";\n  }\n\n  return output.str();\n}\n\nfloat Weather::FindDiffBetweenTwoCities(const std::string &city1, const std::string& city2) {\n  return GetTemperature(city1) - GetTemperature(city2);\n}\n\nvoid Weather::SetApiKey(const std::string &api_key) {\n  api_key_ = api_key;\n}",
+        "gtest_code_header":"//WeatherTestCase.h\n\n#include <gtest/gtest.h>\n\nclass WeatherTestCase : public ::testing::Test {\n};",
+        "gtest_code_source":"//WeatherTestCase.cpp\n\n#include \"WeatherTestCase.h\"\n#include \"WeatherMock.h\"\n\nusing testing::Return;\n\ncpr::Response create_response(std::string temperature, int status_code) {\n  cpr::Response response;\n  response.text = \"{\\\"list\\\":[{ \\\"main\\\": {\\\"temp\\\": \" + temperature + \"}}]}\";\n  response.status_code = status_code;\n\n  return response;\n} \n\nTEST(WeatherTestCase, ResponseForCity) {\n  WeatherMock weather;\n\n  EXPECT_CALL(weather, Get)\n    .Times(2)\n    .WillOnce(Return(create_response(\"40\", 200)))\n    .WillOnce(Return(create_response(\"-5\", 123)));\n\n  EXPECT_NO_THROW(weather.GetResponseForCity(\"any_random_city\"));\n  EXPECT_THROW(weather.GetResponseForCity(\"any_random_city\"), std::invalid_argument);\n}\n\nTEST(WeatherTestCase, Temperature) {\n  WeatherMock weather;\n\n  EXPECT_CALL(weather, Get)\n    .Times(2)\n    .WillOnce(Return(create_response(\"17\", 200)))\n    .WillOnce(Return(create_response(\"-20\", 200)));\n\n  EXPECT_EQ(weather.GetTemperature(\"any_random_city\"), 17);\n  EXPECT_EQ(weather.GetTemperature(\"any_random_city\"), -20);\n}\n\nTEST(WeatherTestCase, DifferenceString) {\n  WeatherMock weather;\n\n  EXPECT_CALL(weather, Get)\n    .Times(6)\n    .WillOnce(Return(create_response(\"5\", 200)))\n    .WillOnce(Return(create_response(\"-5\", 200)))\n    .WillOnce(Return(create_response(\"-5\", 200)))\n    .WillOnce(Return(create_response(\"5\", 200)))\n    .WillOnce(Return(create_response(\"123\", 200)))\n    .WillOnce(Return(create_response(\"123\", 200)));\n\n  EXPECT_EQ(weather.GetDifferenceString(\"A\", \"B\"), \"Weather in A is warmer than in B by 10 degrees\");\n  EXPECT_EQ(weather.GetDifferenceString(\"A\", \"B\"), \"Weather in A is colder than in B by 10 degrees\");\n  EXPECT_EQ(weather.GetDifferenceString(\"A\", \"A\"), \"Weather in A is warmer than in A by 0 degrees\");\n}\n\nTEST(WeatherTestCase, DiffBetweenTwoCities) {\n  WeatherMock weather;\n\n  EXPECT_CALL(weather, Get)\n    .Times(4)\n    .WillOnce(Return(create_response(\"10\", 200)))\n    .WillOnce(Return(create_response(\"20\", 200)))\n    .WillOnce(Return(create_response(\"23\", 200)))\n    .WillOnce(Return(create_response(\"-100\", 200)));\n\n  EXPECT_EQ(weather.FindDiffBetweenTwoCities(\"city_A\", \"city_B\"), -10);\n  EXPECT_EQ(weather.FindDiffBetweenTwoCities(\"city_A\", \"city_B\"), 123);\n}\n\nTEST(WeatherTestCase, ApiTest) {\n  Weather weather;\n  weather.SetApiKey(\"some_bad_api_key\");\n\n  EXPECT_THROW(weather.GetResponseForCity(\"Moscow\"), std::invalid_argument);\n}rTestCase.cpp\n\n"
+    },
+    {
+        "cpp_code_header":"//Addition.h\n\n#ifndef CALCULATION_API\n\n#ifdef CALCULATION_EXPORTS\n#define CALCULATION_API __declspec(dllexport)\n#else\n#define CALCULATION_API __declspec(dllimport)\n#endif\n\n#endif\n\n// This class is exported from the Calculation.dll\nclass CALCULATION_API CAddition {\npublic:\n    CAddition(void);\n    static int twoValues(const int x, const int y);\n};",
+        "cpp_code_source":"//Addition.cpp\n\n#include \"stdafx.h\"\n#include \"Addition.h\"\n\n\nCAddition::CAddition(void)\n{\n}\n\n// This is the constructor of a class that has been exported.\n// see Calculation.h for the class definition\nint CAddition::twoValues(const int x, const int y)\n{\n        return x + y;\n}",
+        "gtest_code_header":"//AdditionTestCase.h\n\n#include \"targetver.h\"\n#include <stdio.h>\n#include <tchar.h>\n#include <limits.h> \n#include <gtest/gtest.h>\n#include <Addition.h>",
+        "gtest_code_source":"//AdditionTestCase.cpp\n\n#include\"AdditionTestCase.h\"class AdditionTest : public ::testing::Test {\n\nprotected:\n\n        virtual void SetUp() {\n\n    }\n\n        virtual void TearDown() {\n            // Code here will be called immediately after each test \n            // (right before the destructor). \n    }\n};\n\nTEST_F(AdditionTest, twoValues) {\n        const int x = 4;\n        const int y = 5;\n        CAddition addition;\n        EXPECT_EQ(9, addition.twoValues(x, y));\n        EXPECT_EQ(5, addition.twoValues(2, 3));\n}"
+    },
+    {
+        "cpp_code_header":"",
+        "cpp_code_source":"",
+        "gtest_code_header":"",
+        "gtest_code_source":""
+    },
+    {
+        "cpp_code_header":"",
+        "cpp_code_source":"",
+        "gtest_code_header":"",
+        "gtest_code_source":""
+    },
+    {
+        "cpp_code_header":"",
+        "cpp_code_source":"",
+        "gtest_code_header":"",
+        "gtest_code_source":""
+    },
+    {
+        "cpp_code_header":"",
+        "cpp_code_source":"",
+        "gtest_code_header":"",
+        "gtest_code_source":""
+    },
+    {
+        "cpp_code_header":"",
+        "cpp_code_source":"",
+        "gtest_code_header":"",
+        "gtest_code_source":""
+    },
+    {
+        "cpp_code_header":"",
+        "cpp_code_source":"",
+        "gtest_code_header":"",
+        "gtest_code_source":""
+    },
+    {
+        "cpp_code_header":"",
+        "cpp_code_source":"",
+        "gtest_code_header":"",
+        "gtest_code_source":""
+    },
+    {
+        "cpp_code_header":"",
+        "cpp_code_source":"",
+        "gtest_code_header":"",
+        "gtest_code_source":""
+    },
+    {
+        "cpp_code_header":"",
+        "cpp_code_source":"",
+        "gtest_code_header":"",
+        "gtest_code_source":""
+    },
+    {
+        "cpp_code_header":"",
+        "cpp_code_source":"",
+        "gtest_code_header":"",
+        "gtest_code_source":""
+    },
+    {
+        "cpp_code_header":"",
+        "cpp_code_source":"",
+        "gtest_code_header":"",
+        "gtest_code_source":""
+    },
+    {
+        "cpp_code_header":"",
+        "cpp_code_source":"",
+        "gtest_code_header":"",
+        "gtest_code_source":""
+    }
+]

@@ -1,0 +1,117 @@
+[
+    {
+        "text": "<s>[INST] What is GoogleTest (GTest)? [/INST] GoogleTest, or GTest, is a unit testing library for the C++ programming language, which provides a framework for writing and running tests. </s>"
+    },
+    {
+        "text": "<s>[INST] What is a test suite in GTest? [/INST] A test suite in GTest is a collection of test cases that share common setup and teardown code. Test suites are typically used to test different aspects of a single unit of functionality. </s>"
+    },
+    {
+        "text": "<s>[INST] How do you define a test suite in GTest? [/INST] In GTest, a test suite is defined using the TEST() macro. The first parameter is the name of the test suite, and the second is the name of the test. For example:\n\nTEST(MathTest, Add) {\n\tEXPECT_EQ(2 + 2, 4);\n} </s>"
+    },
+    {
+        "text": "<s>[INST] How do you include the GoogleTest header file? [/INST] To include GTest in your C++ test files, add the following include directive at the top of your file:\n\n#include <gtest/gtest.h> </s>"
+    },
+    {
+        "text": "<s>[INST] What is the purpose of EXPECT_EQ in GTest? [/INST] EXPECT_EQ is a non-fatal assertion in GTest that checks if two values are equal. If the assertion fails, the test continues executing the following statements. </s>"
+    },
+    {
+        "text": "<s>[INST] What is the purpose of ASSERT_EQ in GTest? [/INST] ASSERT_EQ is a fatal assertion in GTest that checks if two values are equal. If the assertion fails, the test is immediately aborted, and no further statements are executed. </s>"
+    },
+    {
+        "text": "<s>[INST] What is the difference between fatal and non-fatal assertions in GTest? [/INST] Fatal assertions (e.g., ASSERT_EQ) terminate the current test upon failure, while non-fatal assertions (e.g., EXPECT_EQ) allow the test to continue even if the assertion fails. </s>"
+    },
+    {
+        "text": "<s>[INST] What are non-fatal assertions in GTest? [/INST] Non-fatal assertions, such as EXPECT_EQ, EXPECT_TRUE, or EXPECT_NE, allow the test to continue running even if an assertion fails, logging the failure but not terminating the test case. </s>"
+    },
+    {
+        "text": "<s>[INST] What are fatal assertions in GTest? [/INST] Fatal assertions, such as ASSERT_EQ, ASSERT_TRUE, or ASSERT_NE, immediately terminate the current test if the assertion fails, preventing any further execution of code in that test case. </s>"
+    },
+    {
+        "text": "<s>[INST] What is the basic structure of a GTest test file? [/INST] A GTest test file typically includes the following components:\n1. The GTest header file inclusion (#include <gtest/gtest.h>)\n2. A main function to run all tests\n3. Test suites and test cases using the TEST() macro\nFor example:\n#include <gtest/gtest.h>\n\nTEST(MathTest, Add) {\n\tEXPECT_EQ(2 + 2, 4);\n}\n\nint main(int argc, char **argv) {\n\t::testing::InitGoogleTest(&argc, argv);\n\treturn RUN_ALL_TESTS();\n} </s>"
+    },
+    {
+        "text": "<s>[INST] How do you run all tests in a GTest project? [/INST] To run all tests in a GTest project, you use the RUN_ALL_TESTS() function inside the main function of your test file. This function runs all the test cases defined in the project and returns 0 if all tests pass, or a non-zero value if any tests fail. </s>"
+    },
+    {
+        "text": "<s>[INST] How do you initialize GoogleTest in the main function? [/INST] GoogleTest is initialized in the main function by calling the InitGoogleTest() function. For example:\n\nint main(int argc, char **argv) {\n\t::testing::InitGoogleTest(&argc, argv);\n\treturn RUN_ALL_TESTS();\n} </s>"
+    },
+    {
+        "text": "<s>[INST] What is the purpose of ASSERT_TRUE in GTest? [/INST] ASSERT_TRUE is a fatal assertion in GTest that checks if a condition is true. If the condition is false, the test is aborted. </s>"
+    },
+    {
+        "text": "<s>[INST] What is the purpose of EXPECT_TRUE in GTest? [/INST] EXPECT_TRUE is a non-fatal assertion in GTest that checks if a condition is true. If the condition is false, the test logs a failure but continues executing. </s>"
+    },
+    {
+        "text": "<s>[INST] What is the purpose of EXPECT_FALSE in GTest? [/INST] EXPECT_FALSE is a non-fatal assertion in GTest that checks if a condition is false. If the condition is true, the test logs a failure but continues executing. </s>"
+    },
+    {
+        "text": "<s>[INST] How do you check for floating-point equality in GTest? [/INST] In GTest, floating-point equality should be checked using the EXPECT_FLOAT_EQ or ASSERT_FLOAT_EQ macros, as direct equality comparisons for floating-point numbers may result in false failures due to precision issues. </s>"
+    },
+    {
+        "text": "<s>[INST] What is EXPECT_FLOAT_EQ used for in GTest? [/INST] EXPECT_FLOAT_EQ is a non-fatal assertion in GTest used to check if two floating-point values are approximately equal, accounting for potential precision issues. </s>"
+    },
+    {
+        "text": "<s>[INST] What is ASSERT_FLOAT_EQ used for in GTest? [/INST] ASSERT_FLOAT_EQ is a fatal assertion in GTest used to check if two floating-point values are approximately equal, terminating the test if the comparison fails. </s>"
+    },
+    {
+        "text": "<s>[INST] What is the purpose of EXPECT_NE in GTest? [/INST] EXPECT_NE is a non-fatal assertion in GTest that checks if two values are not equal. If the values are equal, the test logs a failure but continues executing. </s>"
+    },
+    {
+        "text": "<s>[INST] What is the purpose of ASSERT_NE in GTest? [/INST] ASSERT_NE is a fatal assertion in GTest that checks if two values are not equal. If the values are equal, the test is aborted. </s>"
+    },
+    {
+        "text": "<s>[INST] How do you compare strings in GTest? [/INST] In GTest, strings can be compared using the EXPECT_STREQ and ASSERT_STREQ macros for equality, and EXPECT_STRNE and ASSERT_STRNE for inequality. </s>"
+    },
+    {
+        "text": "<s>[INST] What is EXPECT_STREQ used for in GTest? [/INST] EXPECT_STREQ is a non-fatal assertion in GTest that checks if two C-style strings are equal. If the strings are not equal, the test logs a failure but continues executing. </s>"
+    },
+    {
+        "text": "<s>[INST] What is ASSERT_STREQ used for in GTest? [/INST] ASSERT_STREQ is a fatal assertion in GTest that checks if two C-style strings are equal. If the strings are not equal, the test is aborted. </s>"
+    },
+    {
+        "text": "<s>[INST] What is EXPECT_STRNE used for in GTest? [/INST] EXPECT_STRNE is a non-fatal assertion in GTest that checks if two C-style strings are not equal. If the strings are equal, the test logs a failure but continues executing. </s>"
+    },
+    {
+        "text": "<s>[INST] What is ASSERT_STRNE used for in GTest? [/INST] ASSERT_STRNE is a fatal assertion in GTest that checks if two C-style strings are not equal. If the strings are equal, the test is aborted. </s>"
+    },
+    {
+        "text": "<s>[INST] What is EXPECT_LT used for in GTest? [/INST] EXPECT_LT is a non-fatal assertion in GTest that checks if one value is less than another. If the condition is false, the test logs a failure but continues executing. </s>"
+    },
+    {
+        "text": "<s>[INST] What is ASSERT_LT used for in GTest? [/INST] ASSERT_LT is a fatal assertion in GTest that checks if one value is less than another. If the condition is false, the test is aborted. </s>"
+    },
+    {
+        "text": "<s>[INST] What is EXPECT_LE used for in GTest? [/INST] EXPECT_LE is a non-fatal assertion in GTest that checks if one value is less than or equal to another. If the condition is false, the test logs a failure but continues executing. </s>"
+    },
+    {
+        "text": "<s>[INST] What is ASSERT_LE used for in GTest? [/INST] ASSERT_LE is a fatal assertion in GTest that checks if one value is less than or equal to another. If the condition is false, the test is aborted. </s>"
+    },
+    {
+        "text": "<s>[INST] What is EXPECT_GT used for in GTest? [/INST] EXPECT_GT is a non-fatal assertion in GTest that checks if one value is greater than another. If the condition is false, the test logs a failure but continues executing. </s>"
+    },
+    {
+        "text": "<s>[INST] What is ASSERT_GT used for in GTest? [/INST] ASSERT_GT is a fatal assertion in GTest that checks if one value is greater than another. If the condition is false, the test is aborted. </s>"
+    },
+    {
+        "text": "<s>[INST] What is EXPECT_GE used for in GTest? [/INST] EXPECT_GE is a non-fatal assertion in GTest that checks if one value is greater than or equal to another. If the condition is false, the test logs a failure but continues executing. </s>"
+    },
+    {
+        "text": "<s>[INST] What is ASSERT_GE used for in GTest? [/INST] ASSERT_GE is a fatal assertion in GTest that checks if one value is greater than or equal to another. If the condition is false, the test is aborted. </s>"
+    },
+    {
+       "text": "<s>[INST] What is a fixture-based test in GTest? [/INST] A fixture-based test in GTest allows you to create a common setup for multiple tests. This is useful when multiple tests require the same initial state or resources.</s>"
+    },
+    {
+       "text": "<s>[INST] How do you define a fixture class in GTest? [/INST] In GTest, a fixture class is defined by inheriting from the testing::Test class. You can then implement the SetUp() and TearDown() methods for common setup and cleanup tasks. For example:\n\nclass MathTest : public testing::Test {\nprotected:\n\tvoid SetUp() override {\n\t\t// Code to set up the test environment.\n\t}\n\t\n\tvoid TearDown() override {\n\t\t// Code to clean up after each test.\n\t}\n}; </s>"
+    },
+    {
+       "text": "<s>[INST] How do you write a test case using a fixture in GTest? [/INST] To write a test case using a fixture, you use the TEST_F macro. The first parameter is the name of the fixture class, and the second is the name of the test case. For example:\n\nTEST_F(MathTest, Add) {\n\tEXPECT_EQ(2 + 2, 4);\n} </s>"
+    },
+    {
+      "text": "<s>[INST] What is the purpose of the SetUp() method in GTest? [/INST] The SetUp() method is called before each test case in a fixture class. It is used to initialize resources or set up the environment required for the tests.</s>"
+    },
+   {
+      "text": "<s>[INST] What is the purpose of the TearDown() method in GTest? [/INST] The TearDown() method is called after each test case in a fixture class. It is used to clean up resources or reset the environment after the tests have run.</s>"
+   }
+
+]
